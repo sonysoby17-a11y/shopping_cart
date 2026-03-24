@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Login</title>
+</head>
+<body style="height: 100vh; justify-content: center;">
+    <div class="glass-card" style="max-width: 400px; text-align: center;">
+        <h2>Welcome Back</h2>
+        <form method="POST">
+            <div style="margin-bottom: 15px;">
+                <input type="text" name="username" placeholder="Username" style="width: 90%;" required>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <input type="password" name="password" placeholder="Password" style="width: 90%;" required>
+            </div>
+            <button type="submit" class="btn" style="width: 100%;">Sign In</button>
+        </form>
+        <p style="margin-top: 15px; font-size: 0.8rem; color: #94a3b8;">Admin: admin / admin123</p>
+    </div>
+</body>
+</html>

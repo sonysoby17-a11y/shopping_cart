@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Keto Shop</title>
+</head>
+<body>
+    <div class="glass-card" style="display: flex; justify-content: space-between; align-items: center;">
+        <h1>Keto Shop</h1>
+        <a href="/login" class="btn">Admin Login</a>
+    </div>
+
+    <div class="glass-card">
+        <h2>Premium Keto Products</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+            {% for p in products %}
+            <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                <h3>{{ p[1] }}</h3>
+                <p style="color: #3b82f6; font-size: 1.2rem; font-weight: bold;">${{ p[2] }}</p>
+                <form action="/checkout" method="POST" style="display: flex; flex-direction: column; gap: 8px;">
+                    <input type="hidden" name="product_id" value="{{ p[0] }}">
+                    <input type="text" name="buyer_name" placeholder="Full Name" required>
+                    <input type="text" name="place" placeholder="Delivery City" required>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span>Qty:</span>
+                        <input type="number" name="quantity" value="1" min="1" style="width: 60px;">
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">Confirm Purchase</button>
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
