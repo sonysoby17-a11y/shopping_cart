@@ -1,0 +1,17 @@
+name: CI/CD Pipeline to Render
+
+on:
+  push:
+    branches:
+      - main  # This triggers the workflow every time you push to 'main'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Production
+        # This sends a "Deploy Hook" signal to Render
+        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
